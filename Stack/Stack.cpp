@@ -1,14 +1,14 @@
 #include "Stack.h"
 
 namespace Deun {
-    Stack::Stack(unsigned long size) {
+    Stack::Stack(unsigned int size) {
         this->size = size;
         top = 0;
         elements = new (std::nothrow) int[size];
 
         if (!elements) {
             this->size = 0;
-            throw StackError::STACK_ALLOCATE_FAILED;
+            throw StackError::STACK_ALLOCATION_FAILED;
         }
     }
 
@@ -16,19 +16,19 @@ namespace Deun {
         delete[] elements;
     }
 
-    bool Stack::isFull() {
-        return (top == size);
-    }
-
     bool Stack::isEmpty() {
         return (top == 0);
     }
 
-    unsigned long Stack::getSize() {
+    bool Stack::isFull() {
+        return (top == size);
+    }
+
+    unsigned int Stack::getSize() {
         return size;
     }
 
-    unsigned long Stack::getCount() {
+    unsigned int Stack::getCount() {
         return top;
     }
 

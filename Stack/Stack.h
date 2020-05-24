@@ -5,26 +5,26 @@
 
 namespace Deun {
     enum class StackError {
-        STACK_ALLOCATE_FAILED,
-        STACK_IS_FULL,
+        STACK_ALLOCATION_FAILED,
         STACK_IS_EMPTY,
     };
 
+    // 배열 기반 스택
     class Stack {
     private:
         int* elements;
-        unsigned long size;
-        unsigned long top;
+        unsigned int size;
+        unsigned int top;
 
     public:
-        Stack(unsigned long size = 100);
+        Stack(unsigned int size = 100);
         ~Stack();
 
-        bool isFull();
         bool isEmpty();
-
-        unsigned long getSize();
-        unsigned long getCount();
+        bool isFull();
+        
+        unsigned int getSize();
+        unsigned int getCount();
 
         bool push(int element);
         int pop();
