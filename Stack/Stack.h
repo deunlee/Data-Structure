@@ -4,32 +4,32 @@
 #include <new>
 
 namespace Deun {
-	enum class StackError {
-		STACK_ALLOCATE_FAILED,
-		STACK_IS_FULL,
-		STACK_IS_EMPTY,
-	};
+    enum class StackError {
+        STACK_ALLOCATION_FAILED,
+        STACK_IS_EMPTY,
+    };
 
-	class Stack {
-	private:
-		int* elements;
-		unsigned long size;
-		unsigned long top;
+    // 배열 기반 스택
+    class Stack {
+    private:
+        int* elements;
+        unsigned int size;
+        unsigned int top;
 
-	public:
-		Stack(unsigned long size = 100);
-		~Stack();
+    public:
+        Stack(unsigned int size = 100);
+        ~Stack();
 
-		bool isFull();
-		bool isEmpty();
+        bool isEmpty();
+        bool isFull();
+        
+        unsigned int getSize();
+        unsigned int getCount();
 
-		unsigned long getSize();
-		unsigned long getCount();
-
-		bool push(int element);
-		int pop();
-		int peek();
-	};
+        bool push(int element);
+        int pop();
+        int peek();
+    };
 }
 
 #endif
