@@ -32,8 +32,8 @@ namespace Deun {
         return count;
     }
 
-    // front : 원소를 삭제할 자리 (채워져 있는 상태, 단, count가 0이면 비워져 있음)
-    // rear  : 원소를 삽입할 자리 (비어있는 상태)
+    // front : 원소를 삭제할 자리 (채워진 상태)   (단, count가 0이면 비워져 있음)
+    // rear  : 원소를 삽입할 자리 (비어있는 상태) (단, count가 size면 채워져 있음)
 
     bool Queue::enqueue(int element) {
         if (isFull()) {
