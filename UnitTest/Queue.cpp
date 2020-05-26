@@ -39,7 +39,6 @@ public:
 
         Assert::IsTrue(q.enqueue(1));
         Assert::IsTrue(q.enqueue(2));
-
         Assert::IsFalse(q.enqueue(3));
     }
 
@@ -50,7 +49,6 @@ public:
         Assert::IsTrue(q.enqueue(2));
         Assert::AreEqual(q.dequeue(), 1);
         Assert::AreEqual(q.dequeue(), 2);
-
         Assert::ExpectException<Deun::QueueError>([&] { q.dequeue(); });
 
         try {
