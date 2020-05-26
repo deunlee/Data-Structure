@@ -16,7 +16,7 @@ namespace Deun {
         unsigned int size;  // 큐의 크기 (배열 원소의 개수)
         unsigned int count; // 채워진 원소의 개수
         // (count 변수를 사용하지 않아도 큐의 공백/포화 상태를
-        //  검출할 수 있지만, 배열의 원소 중 하나를 비워두어야 한다)
+        //  검출할 수 있지만, 배열의 원소 중 하나를 비워두어야 함)
         // (비워두는 것이 마음에 들지 않아 count 변수를 사용하기로 함)
         unsigned int front; // 원소를 삭제할 자리
         unsigned int rear;  // 원소를 삽입할 자리
