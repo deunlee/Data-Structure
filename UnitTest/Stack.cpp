@@ -39,7 +39,6 @@ public:
 
         Assert::IsTrue(s.push(1));
         Assert::IsTrue(s.push(2));
-
         Assert::IsFalse(s.push(3));
     }
 
@@ -50,7 +49,6 @@ public:
         Assert::IsTrue(s.push(2));
         Assert::AreEqual(s.pop(), 2);
         Assert::AreEqual(s.pop(), 1);
-
         Assert::ExpectException<Deun::StackError>([&] { s.pop(); });
 
         try {
