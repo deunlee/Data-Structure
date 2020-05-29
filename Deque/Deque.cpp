@@ -1,3 +1,6 @@
+#ifndef __DEUN_DEQUE_CPP__
+#define __DEUN_DEQUE_CPP__
+
 #include "Deque.h"
 
 namespace Deun {
@@ -8,7 +11,7 @@ namespace Deun {
 
         if (!elements) {
             this->size = 0;
-            throw DequeError::DEQUE_ALLOCATION_FAILED;
+            throw DequeError::MEMORY_ALLOCATION_FAILED;
         }
     }
 
@@ -45,8 +48,8 @@ namespace Deun {
         }
 
         count++;
-        front = (size - 1 + front) % size; // 사실 안전한 방법은 아님
-        //front = (front - 1 + size) % size; // 이건 더 위험함 (front는 unsigned)
+        front = (size - 1 + front) % size; // 안전한 방법은 아님
+        //front = (front - 1 + size) % size; // 이건 더 위험함 (front는 unsigned임)
         elements[front] = element;
         return true;
     }
@@ -65,7 +68,7 @@ namespace Deun {
 
     int Deque::popFront() {
         if (isEmpty()) {
-            throw DequeError::DEQUE_IS_EMPTY;
+            throw DequeError::ELEMENT_NOT_FOUND;
         }
 
         // 큐의 dequeue()와 동일
@@ -77,7 +80,7 @@ namespace Deun {
 
     int Deque::popRear() {
         if (isEmpty()) {
-            throw DequeError::DEQUE_IS_EMPTY;
+            throw DequeError::ELEMENT_NOT_FOUND;
         }
 
         count--;
@@ -87,7 +90,7 @@ namespace Deun {
 
     int Deque::peekFront() {
         if (isEmpty()) {
-            throw DequeError::DEQUE_IS_EMPTY;
+            throw DequeError::ELEMENT_NOT_FOUND;
         }
 
         return elements[front];
@@ -95,20 +98,20 @@ namespace Deun {
 
     int Deque::peekRear() {
         if (isEmpty()) {
-            throw DequeError::DEQUE_IS_EMPTY;
+            throw DequeError::ELEMENT_NOT_FOUND;
         }
 
         return elements[(size - 1 + rear) % size];
     }
 
-    // for debug
     void Deque::clear() {
+        count = front = rear = 0;
+
         for (unsigned int i = 0; i < size; i++) {
             elements[i] = 0;
         }
     }
 
-    // for debug
     void Deque::print() {
         using namespace std;
 
@@ -125,3 +128,5 @@ namespace Deun {
         cout << endl;
     }
 }
+
+#endif
