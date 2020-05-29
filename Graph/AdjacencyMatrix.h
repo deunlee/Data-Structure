@@ -10,12 +10,17 @@ namespace Deun {
         TOO_MANY_VERTICES,
     };
 
-    // 배열 기반 인접 행렬 그래프
+    /**
+     * 배열 기반 인접 행렬 그래프
+     */
     class AdjacencyMatrix {
-    private:
+    protected:
         int   vSize;  // 정점의 최대 개수 (메모리 할당량)
         int   vCount; // 정점의 개수
         char* matrix; // 인접 행렬
+
+        inline char getRaw(int from, int to);
+        inline void setRaw(int from, int to, char value);
 
     public:
         /**
@@ -41,9 +46,9 @@ namespace Deun {
          * 간선은 from과 to를 연결하며 방향성이 있습니다.
          * undirected가 true인 경우에는 to와 from을 잇는 간선도 삽입합니다.
          * 
-         * @param  {int}  from: 시작 정점
-         * @param  {int}  to: 끝 정점
-         * @param  {bool} undirected: 무방향 그래프 여부 (default: false)
+         * @param  {int}  from: 시작 정점 인덱스(0-based)
+         * @param  {int}  to: 끝 정점 인덱스(0-based)
+         * @param  {bool} undirected: 무방향 그래프 여부
          * @return {bool} 성공 여부
          */
         bool insertEdge(int from, int to, bool undirected = false);
@@ -51,19 +56,19 @@ namespace Deun {
         /**
          * 정점의 존재 여부를 반환합니다.
          * 
-         * @param  {int}  v: 정점 번호
+         * @param  {int}  v: 정점 인덱스(0-based)
          * @return {bool} 존재 여부
          */
-        inline bool hasVertex(int v);
+        bool hasVertex(int v);
 
         /**
          * 간선의 존재 여부를 반환합니다.
          * 
-         * @param  {int}  from: 시작 정점
-         * @param  {int}  to: 끝 정점
+         * @param  {int}  from: 시작 정점 인덱스(0-based)
+         * @param  {int}  to: 끝 정점 인덱스(0-based)
          * @return {bool} 존재 여부
          */
-        inline bool hasEdge(int from, int to);
+        bool hasEdge(int from, int to);
 
         /**
          * 인접 행렬을 초기화합니다.
