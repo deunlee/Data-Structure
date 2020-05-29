@@ -1,7 +1,6 @@
 #include "CppUnitTest.h"
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-#include "../Stack/Stack.h"
 #include "../Stack/Stack.cpp"
 
 TEST_CLASS(Stack) {
@@ -55,7 +54,7 @@ public:
             s.pop();
         }
         catch (Deun::StackError err) {
-            if (err == Deun::StackError::STACK_IS_EMPTY) {
+            if (err == Deun::StackError::ELEMENT_NOT_FOUND) {
                 return;
             }
         }

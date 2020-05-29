@@ -1,7 +1,6 @@
 #include "CppUnitTest.h"
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-#include "../Deque/Deque.h"
 #include "../Deque/Deque.cpp"
 
 TEST_CLASS(Deque) {
@@ -85,8 +84,8 @@ public:
             errFront = err;
         }
 
-        if (errRear == Deun::DequeError::DEQUE_IS_EMPTY &&
-            errFront == Deun::DequeError::DEQUE_IS_EMPTY) {
+        if (errRear == Deun::DequeError::ELEMENT_NOT_FOUND &&
+            errFront == Deun::DequeError::ELEMENT_NOT_FOUND) {
             return;
         }
 
