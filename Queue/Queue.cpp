@@ -1,3 +1,6 @@
+#ifndef __DEUN_QUEUE_CPP__
+#define __DEUN_QUEUE_CPP__
+
 #include "Queue.h"
 
 namespace Deun {
@@ -8,7 +11,7 @@ namespace Deun {
         
         if (!elements) {
             this->size = 0;
-            throw QueueError::QUEUE_ALLOCATION_FAILED;
+            throw QueueError::MEMORY_ALLOCATION_FAILED;
         }
     }
 
@@ -48,7 +51,7 @@ namespace Deun {
 
     int Queue::dequeue() {
         if (isEmpty()) {
-            throw QueueError::QUEUE_IS_EMPTY;
+            throw QueueError::ELEMENT_NOT_FOUND;
         }
 
         count--;
@@ -59,9 +62,11 @@ namespace Deun {
 
     int Queue::peek() {
         if (isEmpty()) {
-            throw QueueError::QUEUE_IS_EMPTY;
+            throw QueueError::ELEMENT_NOT_FOUND;
         }
 
         return elements[front];
     }
 }
+
+#endif

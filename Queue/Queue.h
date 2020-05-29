@@ -1,12 +1,12 @@
-#ifndef __DEUN_QUEUE__
-#define __DEUN_QUEUE__
+#ifndef __DEUN_QUEUE_H__
+#define __DEUN_QUEUE_H__
 
 #include <new>
 
 namespace Deun {
     enum class QueueError {
-        QUEUE_ALLOCATION_FAILED,
-        QUEUE_IS_EMPTY,
+        MEMORY_ALLOCATION_FAILED = 1000,
+        ELEMENT_NOT_FOUND,
     };
 
     // 배열 기반 원형 큐
@@ -22,7 +22,7 @@ namespace Deun {
         unsigned int rear;  // 원소를 삽입할 자리
 
     public:
-        Queue(unsigned int size = 100);
+        Queue(unsigned int size = 1000);
         ~Queue();
 
         bool isEmpty();
@@ -31,9 +31,9 @@ namespace Deun {
         unsigned int getSize();    // 전체 크기 반환
         unsigned int getCount();   // 채워진 원소의 개수 반환
 
-        bool enqueue(int element); // 맨 뒤에 원소 삽입 (성공 = true, 실패 = false)
+        bool enqueue(int element); // 맨 뒤에 원소 삽입       (성공 = true, 실패 = false)
         int dequeue();             // 맨 앞 원소 반환 및 삭제 (실패 = throw)
-        int peek();                // 맨 앞 원소 반환 (실패 = throw)
+        int peek();                // 맨 앞 원소 반환         (실패 = throw)
     };
 }
 
