@@ -1,12 +1,13 @@
-#ifndef __DEUN_LINKED_LIST__
-#define __DEUN_LINKED_LIST__
+#ifndef __DEUN_LINKED_LIST_H__
+#define __DEUN_LINKED_LIST_H__
 
 #include <iostream>
 #include <new>
 
 namespace Deun {
     enum class LinkedListError {
-        NODE_NOT_FOUND = 1000,
+        MEMORY_ALLOCATION_FAILED = 1000,
+        NODE_NOT_FOUND,
     };
 
     typedef struct Node {

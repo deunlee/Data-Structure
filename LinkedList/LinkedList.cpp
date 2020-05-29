@@ -1,3 +1,6 @@
+#ifndef __DEUN_LINKED_LIST_CPP__
+#define __DEUN_LINKED_LIST_CPP__
+
 #include "LinkedList.h"
 
 namespace Deun {
@@ -223,3 +226,5 @@ namespace Deun {
         cout << "NULL" << endl;
     }
 }
+
+#endif
