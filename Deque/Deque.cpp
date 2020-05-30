@@ -1,3 +1,6 @@
+#ifndef __DEUN_DEQUE_CPP__
+#define __DEUN_DEQUE_CPP__
+
 #include "Deque.h"
 
 namespace Deun {
@@ -8,7 +11,7 @@ namespace Deun {
 
         if (!elements) {
             this->size = 0;
-            throw DequeError::DEQUE_ALLOCATION_FAILED;
+            throw DequeError::MEMORY_ALLOCATION_FAILED;
         }
     }
 
@@ -35,7 +38,7 @@ namespace Deun {
     // front : 채워진 상태   (단, count가 0이면 비워져 있음)
     // rear  : 비어있는 상태 (단, count가 size면 채워져 있음)
 
-    // front와 rear중 하나는 채워진 상태가, 나머지 하나는 비어있는 상태가 되도록 해야 함
+    // front와 rear 중 하나는 채워진 상태가, 나머지 하나는 비어있는 상태가 되도록 해야 함
     // Deque을 Stack으로 사용하는 경우에는 둘 다 채워져 있거나 둘 다 비어있어도 되지만,
     // Deque을 Queue로 사용하는 경우 맨 처음에 들어간 원소가 맨 처음으로 나오지 않게 됨
 
@@ -45,8 +48,8 @@ namespace Deun {
         }
 
         count++;
-        front = (size - 1 + front) % size; // 사실 안전한 방법은 아님
-        //front = (front - 1 + size) % size; // 이건 더 위험함 (front는 unsigned)
+        front = (size - 1 + front) % size; // 안전한 방법은 아님
+        //front = (front - 1 + size) % size; // 이건 더 위험함 (front는 unsigned임)
         elements[front] = element;
         return true;
     }
@@ -65,7 +68,7 @@ namespace Deun {
 
     int Deque::popFront() {
         if (isEmpty()) {
-            throw DequeError::DEQUE_IS_EMPTY;
+            throw DequeError::ELEMENT_NOT_FOUND;
         }
 
         // 큐의 dequeue()와 동일
@@ -77,7 +80,7 @@ namespace Deun {
 
     int Deque::popRear() {
         if (isEmpty()) {
-            throw DequeError::DEQUE_IS_EMPTY;
+            throw DequeError::ELEMENT_NOT_FOUND;
         }
 
         count--;
@@ -87,7 +90,7 @@ namespace Deun {
 
     int Deque::peekFront() {
         if (isEmpty()) {
-            throw DequeError::DEQUE_IS_EMPTY;
+            throw DequeError::ELEMENT_NOT_FOUND;
         }
 
         return elements[front];
@@ -95,20 +98,20 @@ namespace Deun {
 
     int Deque::peekRear() {
         if (isEmpty()) {
-            throw DequeError::DEQUE_IS_EMPTY;
+            throw DequeError::ELEMENT_NOT_FOUND;
         }
 
         return elements[(size - 1 + rear) % size];
     }
 
-    // for debug
     void Deque::clear() {
+        count = front = rear = 0;
+
         for (unsigned int i = 0; i < size; i++) {
             elements[i] = 0;
         }
     }
 
-    // for debug
     void Deque::print() {
         using namespace std;
 
@@ -125,3 +128,5 @@ namespace Deun {
         cout << endl;
     }
 }
+
+#endif

@@ -1,7 +1,6 @@
 #include "CppUnitTest.h"
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-#include "../Queue/Queue.h"
 #include "../Queue/Queue.cpp"
 
 TEST_CLASS(Queue) {
@@ -55,7 +54,7 @@ public:
             q.dequeue();
         }
         catch (Deun::QueueError err) {
-            if (err == Deun::QueueError::QUEUE_IS_EMPTY) {
+            if (err == Deun::QueueError::ELEMENT_NOT_FOUND) {
                 return;
             }
         }

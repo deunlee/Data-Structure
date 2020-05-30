@@ -1,3 +1,6 @@
+#ifndef __DEUN_STACK_CPP__
+#define __DEUN_STACK_CPP__
+
 #include "Stack.h"
 
 namespace Deun {
@@ -8,7 +11,7 @@ namespace Deun {
 
         if (!elements) {
             this->size = 0;
-            throw StackError::STACK_ALLOCATION_FAILED;
+            throw StackError::MEMORY_ALLOCATION_FAILED;
         }
     }
 
@@ -43,7 +46,7 @@ namespace Deun {
 
     int Stack::pop() {
         if (isEmpty()) {
-            throw StackError::STACK_IS_EMPTY;
+            throw StackError::ELEMENT_NOT_FOUND;
         }
 
         return elements[--top];
@@ -51,9 +54,11 @@ namespace Deun {
 
     int Stack::peek() {
         if (isEmpty()) {
-            throw StackError::STACK_IS_EMPTY;
+            throw StackError::ELEMENT_NOT_FOUND;
         }
 
         return elements[top - 1];
     }
 }
+
+#endif

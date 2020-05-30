@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Deque", "Deque\Deque.vcxpro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LinkedList", "LinkedList\LinkedList.vcxproj", "{57412A8E-41D0-474D-B912-9AAB3EBDA451}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Graph", "Graph\Graph.vcxproj", "{6051C310-D82F-405A-A84D-64C9FD818FFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -61,6 +63,14 @@ Global
 		{57412A8E-41D0-474D-B912-9AAB3EBDA451}.Release|x64.Build.0 = Release|x64
 		{57412A8E-41D0-474D-B912-9AAB3EBDA451}.Release|x86.ActiveCfg = Release|Win32
 		{57412A8E-41D0-474D-B912-9AAB3EBDA451}.Release|x86.Build.0 = Release|Win32
+		{6051C310-D82F-405A-A84D-64C9FD818FFE}.Debug|x64.ActiveCfg = Debug|x64
+		{6051C310-D82F-405A-A84D-64C9FD818FFE}.Debug|x64.Build.0 = Debug|x64
+		{6051C310-D82F-405A-A84D-64C9FD818FFE}.Debug|x86.ActiveCfg = Debug|Win32
+		{6051C310-D82F-405A-A84D-64C9FD818FFE}.Debug|x86.Build.0 = Debug|Win32
+		{6051C310-D82F-405A-A84D-64C9FD818FFE}.Release|x64.ActiveCfg = Release|x64
+		{6051C310-D82F-405A-A84D-64C9FD818FFE}.Release|x64.Build.0 = Release|x64
+		{6051C310-D82F-405A-A84D-64C9FD818FFE}.Release|x86.ActiveCfg = Release|Win32
+		{6051C310-D82F-405A-A84D-64C9FD818FFE}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

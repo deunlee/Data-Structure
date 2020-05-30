@@ -1,12 +1,12 @@
-#ifndef __DEUN_STACK__
-#define __DEUN_STACK__
+#ifndef __DEUN_STACK_H__
+#define __DEUN_STACK_H__
 
 #include <new>
 
 namespace Deun {
     enum class StackError {
-        STACK_ALLOCATION_FAILED,
-        STACK_IS_EMPTY,
+        MEMORY_ALLOCATION_FAILED = 1000,
+        ELEMENT_NOT_FOUND,
     };
 
     // 배열 기반 스택
@@ -17,7 +17,7 @@ namespace Deun {
         unsigned int top;  // 원소를 삽입/삭제할 자리
 
     public:
-        Stack(unsigned int size = 100);
+        Stack(unsigned int size = 1000);
         ~Stack();
 
         bool isEmpty();
