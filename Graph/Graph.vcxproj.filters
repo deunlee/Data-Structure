@@ -9,6 +9,6 @@
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="AdjacencyMatrix.cpp" />
     <ClCompile Include="AdjacencyList.cpp" />
-    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Playground.cpp" />
   </ItemGroup>
 </Project>
