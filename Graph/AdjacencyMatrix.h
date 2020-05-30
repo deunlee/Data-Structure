@@ -11,7 +11,7 @@ namespace Deun {
     };
 
     /**
-     * 배열 기반 인접 행렬 그래프
+     * 인접 행렬 그래프 (배열 기반)
      */
     class AdjacencyMatrix {
     protected:
@@ -19,8 +19,8 @@ namespace Deun {
         int   vCount; // 정점의 개수
         char* matrix; // 인접 행렬
 
-        inline char getRaw(int from, int to);
-        inline void setRaw(int from, int to, char value);
+        inline bool getRaw(int from, int to);
+        inline void setRaw(int from, int to, bool value);
 
     public:
         /**
@@ -31,6 +31,9 @@ namespace Deun {
          */
         AdjacencyMatrix(int vSize = 1000);
 
+        /**
+         * 인접 행렬 소멸자
+         */
         ~AdjacencyMatrix();
         
         /**
@@ -42,7 +45,7 @@ namespace Deun {
         int insertVertex();
 
         /**
-         * 간선을 삽입합니다.
+         * 간선을 삽입하고 성공 여부를 반환합니다.
          * 간선은 from과 to를 연결하며 방향성이 있습니다.
          * undirected가 true인 경우에는 to와 from을 잇는 간선도 삽입합니다.
          * 

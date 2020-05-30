@@ -26,11 +26,11 @@ namespace Deun {
         delete[] matrix;
     }
 
-    inline char AdjacencyMatrix::getRaw(int from, int to) {
-        return matrix[from * vSize + to];
+    inline bool AdjacencyMatrix::getRaw(int from, int to) {
+        return (bool)matrix[from * vSize + to];
     }
 
-    inline void AdjacencyMatrix::setRaw(int from, int to, char value) {
+    inline void AdjacencyMatrix::setRaw(int from, int to, bool value) {
         matrix[from * vSize + to] = value;
     }
 
@@ -46,9 +46,9 @@ namespace Deun {
             return false;
         }
 
-        setRaw(from, to, 1);
+        setRaw(from, to, true);
         if (undirected) {
-            setRaw(to, from, 1);
+            setRaw(to, from, true);
         }
         return true;
     }
@@ -68,6 +68,7 @@ namespace Deun {
     }
 
     void AdjacencyMatrix::clear() {
+        vCount = 0;
         for (unsigned int i = 0; i < (unsigned int)vSize * (unsigned int)vSize; i++) {
             matrix[i] = 0;
         }
