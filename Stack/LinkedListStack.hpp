@@ -66,13 +66,30 @@ namespace Deun {
     }
 
     template <typename T>
+    void LinkedListStack<T>::print() {
+        using namespace std;
+        cout << "LinkedListStack(size=inf, count=" << count << ")" << endl;
+        if (!head) {
+            cout << "(empty)" << endl;
+            return;
+        }
+        StackNode<T>* current = head;
+        cout << "(head)";
+        while (current) {
+            cout << " -> " << current->data;
+            current = current->next;
+        }
+        cout << endl;
+    }
+
+    template <typename T>
     void LinkedListStack<T>::clear() {
-        StackNode<T>* front = head;
+        StackNode<T>* current = head;
         StackNode<T>* next;
-        while (front) {
-            next = front->next;
-            delete front;
-            front = next;
+        while (current) {
+            next = current->next;
+            delete current;
+            current = next;
         }
         head = nullptr;
         count = 0;

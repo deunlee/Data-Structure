@@ -1,6 +1,7 @@
 #ifndef __DEUN_STACK_HPP__
 #define __DEUN_STACK_HPP__
 
+#include <iostream>
 #include <new>
 
 namespace Deun {
@@ -22,6 +23,8 @@ namespace Deun {
         virtual bool push(const T& element) = 0;
         virtual T pop() = 0;
         virtual const T& peek() = 0;
+
+        virtual void print() = 0;
         virtual void clear() = 0;
     };
 

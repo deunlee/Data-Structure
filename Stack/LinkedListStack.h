@@ -74,6 +74,11 @@ namespace Deun {
         const T& peek();
 
         /**
+         * 스택을 출력합니다.
+         */
+        void print();
+        
+        /**
          * 스택을 초기화합니다.
          * 모든 원소가 삭제됩니다.
          */

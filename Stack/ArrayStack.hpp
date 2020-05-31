@@ -70,6 +70,24 @@ namespace Deun {
     }
 
     template <typename T>
+    void ArrayStack<T>::print() {
+        using namespace std;
+        cout << "ArrayStack(size=" << size << ", count=" << count << ")" << endl;
+        if (!count) {
+            cout << "(empty)" << endl;
+            return;
+        }
+        cout << "(top) ";
+        for (int i = count - 1; i >= 0; i--) {
+            cout << array[i];
+            if (i) {
+                cout << " / ";
+            }
+        }
+        cout << endl;
+    }
+
+    template <typename T>
     void ArrayStack<T>::clear() {
         count = 0;
     }
