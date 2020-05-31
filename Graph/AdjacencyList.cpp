@@ -7,7 +7,7 @@ namespace Deun {
     AdjacencyList::AdjacencyList(int vSize) {
         if (vSize <= 0) {
             this->vSize = 0;
-            throw AdjacencyListError::MEMORY_ALLOCATION_FAILED;
+            throw GraphError::MEMORY_ALLOCATION_FAILED;
         }
 
         this->vSize = vSize;
@@ -16,7 +16,7 @@ namespace Deun {
 
         if (!list) {
             this->vSize = 0;
-            throw AdjacencyListError::MEMORY_ALLOCATION_FAILED;
+            throw GraphError::MEMORY_ALLOCATION_FAILED;
         }
         
         for (int i = 0; i < vSize; i++) {
@@ -33,7 +33,7 @@ namespace Deun {
         if (vCount < vSize) {
             return vCount++;
         }
-        throw AdjacencyListError::TOO_MANY_VERTICES;
+        throw GraphError::TOO_MANY_VERTICES;
     }
 
     bool AdjacencyList::insertEdge(int from, int to, bool undirected) {

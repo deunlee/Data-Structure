@@ -1,23 +1,17 @@
 #ifndef __DEUN_GRAPH_ADJ_MATRIX_H__
 #define __DEUN_GRAPH_ADJ_MATRIX_H__
 
-#include <iostream>
-#include <new>
+#include "Graph.h"
 
 namespace Deun {
-    enum class AdjacencyMatrixError {
-        MEMORY_ALLOCATION_FAILED = 1000,
-        TOO_MANY_VERTICES,
-    };
-
     /**
      * 인접 행렬 그래프 (배열 기반)
      */
-    class AdjacencyMatrix {
+    class AdjacencyMatrix : public Graph {
     protected:
         int   vSize;  // 정점의 최대 개수 (메모리 할당량)
         int   vCount; // 정점의 개수
-        char* matrix; // 인접 행렬
+        bool *matrix; // 인접 행렬
 
         inline bool getRaw(int from, int to);
         inline void setRaw(int from, int to, bool value);
@@ -27,7 +21,7 @@ namespace Deun {
          * 인접 행렬 생성자
          *
          * @param {int} vSize: 정점의 최대 개수
-         * @throw {AdjacencyMatrixError} 메모리 할당 오류
+         * @throw {GraphError} 메모리 할당 오류
          */
         AdjacencyMatrix(int vSize = 1000);
 
@@ -40,7 +34,7 @@ namespace Deun {
          * 정점을 삽입하고 삽입된 정점의 인덱스를 반환합니다.
          * 
          * @return {int} 삽입된 정점의 인덱스(0-based)
-         * @throw  {AdjacencyMatrixError} 정점 개수 초과 오류
+         * @throw  {GraphError} 정점 개수 초과 오류
          */
         int insertVertex();
 
