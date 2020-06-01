@@ -5,7 +5,7 @@
 
 namespace Deun {
     template <typename T>
-    LinkedListStack<T>::LinkedListStack() : Stack(0), head(nullptr) {}
+    LinkedListStack<T>::LinkedListStack() : Stack(0), head(nullptr) { }
 
     template <typename T>
     LinkedListStack<T>::~LinkedListStack() {
@@ -34,7 +34,7 @@ namespace Deun {
         if (!front) {
             return false;
         }
-        front->data = element;
+        front->data = element; // 클래스 내부 값만 복사 (얕은 복사)
         front->next = head;
         head = front;
         count++;
@@ -42,26 +42,23 @@ namespace Deun {
     }
 
     template <typename T>
-    T LinkedListStack<T>::pop() {
-        // 스택의 맨 앞 노드를 반환하고 삭제한다.
+    bool LinkedListStack<T>::pop() {
+        // 스택의 마지막 원소를 삭제한다.
         if (isEmpty()) {
-            throw StackError::ELEMENT_NOT_FOUND;
+            return false;
         }
-
         StackNode<T>* front = head;
-        T data = front->data;
         head = front->next;
         delete front;
         count--;
-        return data;
+        return true;
     }
 
     template <typename T>
-    const T& LinkedListStack<T>::peek() {
+    T& LinkedListStack<T>::peek() {
         if (isEmpty()) {
             throw StackError::ELEMENT_NOT_FOUND;
         }
-
         return head->data;
     }
 

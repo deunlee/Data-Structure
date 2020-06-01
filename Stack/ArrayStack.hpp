@@ -9,8 +9,10 @@ namespace Deun {
         if (size <= 0) {
             throw StackError::SIZE_IS_TOO_SMALL;
         }
-
-        array = new (std::nothrow) T[size];
+        //array = new (std::nothrow) T[size];
+        array = static_cast<T*>(::operator new(sizeof(T) * size, std::nothrow));
+        // new는 메모리 할당 후 생성자를 호출하지만 operator new는 메모리만 할당한다. (C의 malloc()와 동일)
+        // (new 사용시 기본 생성자가 없는 클래스는 컴파일 오류가 발생한다.)
         if (!array) {
             throw StackError::MEMORY_ALLOCATION_FAILED;
         }
@@ -18,7 +20,9 @@ namespace Deun {
 
     template <typename T>
     ArrayStack<T>::~ArrayStack() {
-        delete[] array;
+        //delete[] array;
+        clear();
+        ::operator delete(array);
     }
 
     template <typename T>
@@ -46,26 +50,24 @@ namespace Deun {
         if (isFull()) {
             return false;
         }
-
-        array[count++] = element;
+        array[count++] = element; // 값만 복사 (TODO)
         return true;
     }
 
     template <typename T>
-    T ArrayStack<T>::pop() {
+    bool ArrayStack<T>::pop() {
         if (isEmpty()) {
-            throw StackError::ELEMENT_NOT_FOUND;
+            return false;
         }
-
-        return array[--count];
+        array[--count].~T(); // 명시적 소멸자 호출 (문제 있음)
+        return true;
     }
 
     template <typename T>
-    const T& ArrayStack<T>::peek() {
+    T& ArrayStack<T>::peek() {
         if (isEmpty()) {
             throw StackError::ELEMENT_NOT_FOUND;
         }
-
         return array[count - 1];
     }
 
@@ -89,6 +91,9 @@ namespace Deun {
 
     template <typename T>
     void ArrayStack<T>::clear() {
+        for (int i = 0; i < count; i++) {
+            array[i].~T(); // 명시적 소멸자 호출
+        }
         count = 0;
     }
 }

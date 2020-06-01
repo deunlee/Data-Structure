@@ -13,16 +13,18 @@ namespace Deun {
     protected:
         int count; // 현재 원소의 개수 (ArrayStack에서는 top으로 사용됨)
 
-        Stack(int count) : count(count) {}
+        Stack(int count) : count(count) { }
 
     public:
+        virtual ~Stack() { }
+
         virtual int getCount() = 0;
         virtual bool isEmpty() = 0;
         virtual bool isFull() = 0;
 
         virtual bool push(const T& element) = 0;
-        virtual T pop() = 0;
-        virtual const T& peek() = 0;
+        virtual bool pop() = 0;
+        virtual T& peek() = 0;
 
         virtual void print() = 0;
         virtual void clear() = 0;
