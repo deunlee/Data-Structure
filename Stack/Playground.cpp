@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 #include "Stack.h"
@@ -8,43 +9,51 @@ class Point {
 private:
     int x, y;
 
-public:
     // Default Constructor
     Point() {
         x = y = 0;
-        cout << "<DC-Point(0, 0)@" << this << ">";
+        cout << "<DC-" << toString() << ">";
     }
 
+public:
     // Parameterized Constructors
     Point(int x, int y) : x(x), y(y) {
-        cout << "<PC-Point(" << x << ", " << y << ")@" << this << ">";
+        cout << "<PC-" << toString() << ">";
     }
 
     // Copy Constructor
     Point(const Point& ref) : x(ref.x), y(ref.y) {
         x = ref.x;
         y = ref.y;
-        cout << "<CC-Point(" << x << ", " << y << ")@" << this << ">";
+        cout << "<CC-" << toString() << ">";
     }
 
     // Destructor
     ~Point() {
-        //cout << endl;
-        cout << "<D-Point(" << x << ", " << y << ")@" << this << ">";
+        cout << "<D-" << toString() << ">";
     }
 
-    int getX() { return x; }
-    int getY() { return y; }
+    int getX() const { return x; }
+    int getY() const { return y; }
     void setX(int x) { this->x = x; }
     void setY(int y) { this->y = y; }
 
-    friend ostream& operator<<(ostream& os, const Point& obj) {
-        os << "Point(" << obj.x << ", " << obj.y << ")@" << &obj;
+#pragma warning(push)
+#pragma warning(disable:4302)
+    static string toString(const Point& ref) {
+        return "Point(" + to_string(ref.getX()) + ", " + to_string(ref.getY()) + ")@" + to_string((unsigned short)&ref);
+    }
+#pragma warning(pop)
+    string toString() const {
+        return toString(*this);
+    }
+    friend ostream& operator<<(ostream& os, const Point& p) {
+        os << toString(p);
         return os;
     }
 };
 
-using MyType = int;
+using MyType = Point;
 
 int main() {
     Stack<MyType>* stack = nullptr;
@@ -81,7 +90,7 @@ int main() {
         case 1:
             cout << ">>> data : ";
             cin >> data;
-            cout << ">>> push(" << data << "): " << stack->push(1);//Point(data, data*2)
+            cout << ">>> push(" << data << "): " << stack->push(Point(data, data * 2));
             break;
 
         case 2:
@@ -107,7 +116,6 @@ int main() {
         case 4:
             cout << ">>> Exit..." << endl;
             delete stack;
-            while (1);
             return 0;
 
         default:
