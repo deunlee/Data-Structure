@@ -16,6 +16,8 @@ namespace Deun {
         int vSize; // 정점 개수 (메모리 할당량)
 
     public:
+        virtual ~Graph() { }
+
         virtual int insertVertex() = 0;
         virtual bool insertEdge(int from, int to, bool undirected = false) = 0;
 
