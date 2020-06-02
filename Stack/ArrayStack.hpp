@@ -9,10 +9,10 @@ namespace Deun {
         if (size <= 0) {
             throw StackError::SIZE_IS_TOO_SMALL;
         }
-        //array = new (std::nothrow) T[size];
-        array = static_cast<T*>(::operator new(sizeof(T) * size, std::nothrow));
-        // new는 메모리 할당 후 생성자를 호출하지만 operator new는 메모리만 할당한다. (C의 malloc()와 동일)
-        // (new 사용시 기본 생성자가 없는 클래스는 컴파일 오류가 발생한다.)
+        array = static_cast<T*>(operator new(sizeof(T) * size, std::nothrow));
+        // new는 메모리 할당 후 생성자를 호출하지만, operator new는 메모리만 할당한다.
+        // (C의 malloc()와 동일하게 생성자를 호출하지 않는다.)
+        // new를 사용하는 경우 기본 생성자가 없는 클래스는 컴파일 오류가 발생한다.
         if (!array) {
             throw StackError::MEMORY_ALLOCATION_FAILED;
         }
@@ -20,9 +20,8 @@ namespace Deun {
 
     template <typename T>
     ArrayStack<T>::~ArrayStack() {
-        //delete[] array;
-        clear();
-        ::operator delete(array);
+        clear(); // 명시적 소멸자 호출
+        operator delete(array); // 모든 메모리를 반환한다.
     }
 
     template <typename T>
@@ -37,7 +36,7 @@ namespace Deun {
 
     template <typename T>
     bool ArrayStack<T>::isEmpty() {
-        return (count == 0); // count는 top 용도로 쓰임.
+        return (count == 0); // count는 top 용도로 쓰인다.
     }
     
     template <typename T>
@@ -50,7 +49,10 @@ namespace Deun {
         if (isFull()) {
             return false;
         }
-        array[count++] = element; // 값만 복사 (TODO)
+        new(&array[count++]) T(element); // placement new
+        // 스택 생성자에서 미리 할당해 놓은 메모리에 T의 복사 생성자로 생성한다.
+        // placement new는 new와 다르게 메모리를 할당하지 않고 기존 메모리에 생성한다.
+        // 깊은 복사가 필요한 클래스를 사용할 경우 직접 복사 생성자를 구현해야 한다.
         return true;
     }
 
@@ -59,7 +61,7 @@ namespace Deun {
         if (isEmpty()) {
             return false;
         }
-        array[--count].~T(); // 명시적 소멸자 호출 (문제 있음)
+        array[--count].~T(); // 명시적 소멸자 호출
         return true;
     }
 
@@ -91,7 +93,7 @@ namespace Deun {
 
     template <typename T>
     void ArrayStack<T>::clear() {
-        for (int i = 0; i < count; i++) {
+        for (int i = count - 1; i >= 0; i--) { // top 부터 삭제
             array[i].~T(); // 명시적 소멸자 호출
         }
         count = 0;

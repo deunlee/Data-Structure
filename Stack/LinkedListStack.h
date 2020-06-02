@@ -8,9 +8,27 @@ namespace Deun {
      * 스택 노드
      */
     template <typename T>
-    struct StackNode {
-        T data;
+    class StackNode {
+    private:
+        const T    data;
         StackNode* next;
+
+    public:
+        StackNode(const T& data) : data(data) { }
+        // data를 복사 생성자로 초기화하기 위해 상수로 선언하고 생성자의 초기화 리스트를 이용해 초기화한다.
+        // (data가 기본 생성자로 생성되고 맴버 변수들의 값만 덮어써지는 것을 막기 위함.)
+        
+        inline T& getData() {
+            return const_cast<T&>(data);
+        }
+
+        inline StackNode* getNext() {
+            return next;
+        }
+
+        inline void setNext(StackNode* next) {
+            this->next = next;
+        }
     };
 
     /**
@@ -60,7 +78,7 @@ namespace Deun {
         bool pop();
 
         /**
-         * 스택에서 마지막 원소를 반환합니다.
+         * 스택의 마지막 원소를 반환합니다.
          * @throw StackError (스택이 빈 경우)
          */
         T& peek();
