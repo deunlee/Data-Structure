@@ -4,11 +4,12 @@
     <ClInclude Include="AdjacencyList.h" />
     <ClInclude Include="AdjacencyMatrix.h" />
     <ClInclude Include="Graph.h" />
+    <ClInclude Include="AdjacencyList.hpp" />
+    <ClInclude Include="AdjacencyMatrix.hpp" />
+    <ClInclude Include="Algorithm.hpp" />
+    <ClInclude Include="Graph.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Graph.cpp" />
-    <ClCompile Include="AdjacencyMatrix.cpp" />
-    <ClCompile Include="AdjacencyList.cpp" />
     <ClCompile Include="Playground.cpp" />
   </ItemGroup>
 </Project>

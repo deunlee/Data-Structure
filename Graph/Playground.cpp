@@ -1,8 +1,6 @@
 #include <iostream>
 using namespace std;
 
-#include "AdjacencyMatrix.h"
-#include "AdjacencyList.h"
 #include "Graph.h"
 using namespace Deun;
 
@@ -23,7 +21,7 @@ void adjacencyMatrixPG() {
             try {
                 cout << ">>> insertVertex(): " << adjMatrix.insertVertex();
             }
-            catch (AdjacencyMatrixError err) {
+            catch (GraphError err) {
                 cout << ">>> insertVertex(): Error Code " << (int)err;
             }
             break;
@@ -73,7 +71,7 @@ void adjacencyListPG() {
             try {
                 cout << ">>> insertVertex(): " << adjList.insertVertex();
             }
-            catch (AdjacencyListError err) {
+            catch (GraphError err) {
                 cout << ">>> insertVertex(): Error Code " << (int)err;
             }
             break;

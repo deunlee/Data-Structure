@@ -1,5 +1,5 @@
-#ifndef __DEUN_GRAPH_ADJ_LIST_CPP__
-#define __DEUN_GRAPH_ADJ_LIST_CPP__
+#ifndef __DEUN_ADJACENCY_LIST_GRAPH_HPP__
+#define __DEUN_ADJACENCY_LIST_GRAPH_HPP__
 
 #include "AdjacencyList.h"
 
@@ -18,7 +18,7 @@ namespace Deun {
             this->vSize = 0;
             throw GraphError::MEMORY_ALLOCATION_FAILED;
         }
-        
+
         for (int i = 0; i < vSize; i++) {
             list[i] = nullptr;
         }
@@ -74,7 +74,7 @@ namespace Deun {
         if (from < 0 || from >= vCount || to < 0 || to >= vCount) {
             return false;
         }
-        
+
         ALNode* p = list[from];
         while (p) {
             if (p->vertex == to) {

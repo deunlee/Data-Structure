@@ -1,5 +1,5 @@
-#ifndef __DEUN_GRAPH_ADJ_MATRIX_CPP__
-#define __DEUN_GRAPH_ADJ_MATRIX_CPP__
+#ifndef __DEUN_ADJACENCY_MATRIX_GRAPH_HPP__
+#define __DEUN_ADJACENCY_MATRIX_GRAPH_HPP__
 
 #include "AdjacencyMatrix.h"
 
@@ -18,7 +18,7 @@ namespace Deun {
             this->vSize = 0;
             throw GraphError::MEMORY_ALLOCATION_FAILED;
         }
-        
+
         clear();
     }
 

@@ -1,7 +1,7 @@
-#ifndef __DEUN_GRAPH_ADJ_MATRIX_H__
-#define __DEUN_GRAPH_ADJ_MATRIX_H__
+#ifndef __DEUN_ADJACENCY_MATRIX_GRAPH_H__
+#define __DEUN_ADJACENCY_MATRIX_GRAPH_H__
 
-#include "Graph.h"
+#include "Graph.hpp"
 
 namespace Deun {
     /**
