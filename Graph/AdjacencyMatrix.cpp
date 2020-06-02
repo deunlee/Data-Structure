@@ -7,16 +7,16 @@ namespace Deun {
     AdjacencyMatrix::AdjacencyMatrix(int vSize) {
         if (vSize <= 0) {
             this->vSize = 0;
-            throw AdjacencyMatrixError::MEMORY_ALLOCATION_FAILED;
+            throw GraphError::MEMORY_ALLOCATION_FAILED;
         }
 
         this->vSize = vSize;
         vCount = 0;
-        matrix = new (std::nothrow) char[vSize * vSize];
+        matrix = new (std::nothrow) bool[vSize * vSize];
 
         if (!matrix) {
             this->vSize = 0;
-            throw AdjacencyMatrixError::MEMORY_ALLOCATION_FAILED;
+            throw GraphError::MEMORY_ALLOCATION_FAILED;
         }
         
         clear();
@@ -27,7 +27,7 @@ namespace Deun {
     }
 
     inline bool AdjacencyMatrix::getRaw(int from, int to) {
-        return (bool)matrix[from * vSize + to];
+        return matrix[from * vSize + to];
     }
 
     inline void AdjacencyMatrix::setRaw(int from, int to, bool value) {
@@ -38,7 +38,7 @@ namespace Deun {
         if (vCount < vSize) {
             return vCount++;
         }
-        throw AdjacencyMatrixError::TOO_MANY_VERTICES;
+        throw GraphError::TOO_MANY_VERTICES;
     }
 
     bool AdjacencyMatrix::insertEdge(int from, int to, bool undirected) {

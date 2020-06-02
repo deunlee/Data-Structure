@@ -1,15 +1,9 @@
 #ifndef __DEUN_GRAPH_ADJ_LIST_H__
 #define __DEUN_GRAPH_ADJ_LIST_H__
 
-#include <iostream>
-#include <new>
+#include "Graph.h"
 
 namespace Deun {
-    enum class AdjacencyListError {
-        MEMORY_ALLOCATION_FAILED = 1000,
-        TOO_MANY_VERTICES,
-    };
-
     typedef struct AdjacencyListNode {
         int vertex;
         struct AdjacencyListNode* next;
@@ -18,7 +12,7 @@ namespace Deun {
     /**
      * 인접 리스트 그래프 (연결 리스트 기반)
      */
-    class AdjacencyList {
+    class AdjacencyList : public Graph {
     protected:
         int      vSize;  // 정점의 최대 개수 (메모리 할당량)
         int      vCount; // 정점의 개수
@@ -29,7 +23,7 @@ namespace Deun {
          * 인접 리스트 생성자
          *
          * @param {int} vSize: 정점의 최대 개수
-         * @throw {AdjacencyListError} 메모리 할당 오류
+         * @throw {GraphError} 메모리 할당 오류
          */
         AdjacencyList(int vSize = 1000);
 
@@ -42,7 +36,7 @@ namespace Deun {
          * 정점을 삽입하고 삽입된 정점의 인덱스를 반환합니다.
          * 
          * @return {int} 삽입된 정점의 인덱스(0-based)
-         * @throw  {AdjacencyListError} 정점 개수 초과 오류
+         * @throw  {GraphError} 정점 개수 초과 오류
          */
         int insertVertex();
 
