@@ -9,25 +9,23 @@ namespace Deun {
      * 그래프 인터페이스
      */
     class Graph {
-    private:
-        void __dfs(int vertex, bool* visited);
-
     protected:
-        int vSize; // 정점 개수 (메모리 할당량)
+        int vertices; // 정점의 최대 개수 (메모리 할당량)
+
+        Graph(int vertices) : vertices(vertices) { }
 
     public:
         virtual ~Graph() { }
 
-        virtual int insertVertex() = 0;
         virtual bool insertEdge(int from, int to, bool undirected = false) = 0;
-
-        virtual bool hasVertex(int v) = 0;
         virtual bool hasEdge(int from, int to) = 0;
 
         virtual void clear() = 0;
         virtual void print() = 0;
 
-        bool dfs(int vertex);
+        virtual bool dfs(int vertex) {
+            return false;
+        }
     };
 
     /**
