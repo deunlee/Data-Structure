@@ -151,7 +151,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DisjointSet.cpp" />
+    <ClCompile Include="Playground.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DisjointSet.h" />
+    <ClInclude Include="DisjointSet.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
