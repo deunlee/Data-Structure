@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LinkedList", "LinkedList\Li
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Graph", "Graph\Graph.vcxproj", "{6051C310-D82F-405A-A84D-64C9FD818FFE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DisjointSet", "DisjointSet\DisjointSet.vcxproj", "{470CB2FB-81E9-46BA-A798-83119449CAB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -71,6 +73,14 @@ Global
 		{6051C310-D82F-405A-A84D-64C9FD818FFE}.Release|x64.Build.0 = Release|x64
 		{6051C310-D82F-405A-A84D-64C9FD818FFE}.Release|x86.ActiveCfg = Release|Win32
 		{6051C310-D82F-405A-A84D-64C9FD818FFE}.Release|x86.Build.0 = Release|Win32
+		{470CB2FB-81E9-46BA-A798-83119449CAB0}.Debug|x64.ActiveCfg = Debug|x64
+		{470CB2FB-81E9-46BA-A798-83119449CAB0}.Debug|x64.Build.0 = Debug|x64
+		{470CB2FB-81E9-46BA-A798-83119449CAB0}.Debug|x86.ActiveCfg = Debug|Win32
+		{470CB2FB-81E9-46BA-A798-83119449CAB0}.Debug|x86.Build.0 = Debug|Win32
+		{470CB2FB-81E9-46BA-A798-83119449CAB0}.Release|x64.ActiveCfg = Release|x64
+		{470CB2FB-81E9-46BA-A798-83119449CAB0}.Release|x64.Build.0 = Release|x64
+		{470CB2FB-81E9-46BA-A798-83119449CAB0}.Release|x86.ActiveCfg = Release|Win32
+		{470CB2FB-81E9-46BA-A798-83119449CAB0}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
